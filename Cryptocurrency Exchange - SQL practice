@@ -1,0 +1,41 @@
+ -- Alfie Sharman's Cryptocurrency Exchange - SQL practice
+ 
+ -- Q1
+ SELECT *
+FROM transactions
+Limit 15;
+
+-- What is the total money in in the table?
+SELECT SUM(money_in)
+FROM transactions;
+
+-- What is the total money out in the table?
+SELECT SUM(money_out)
+FROM transactions;
+
+-- It was reported that Bitcoin dominates Fiddy Cent’s exchange. Let’s see if it is true within these dates by answering two questions:
+-- 1. How many money in transactions are in this table?
+-- 2. How many money in transactions are in this table where ‘BIT’ is the currency?
+SELECT COUNT(money_in)
+FROM transactions;
+
+SELECT COUNT(money_in)
+FROM transactions
+WHERE currency = 'BIT';
+
+-- What was the largest transaction in this whole table? Was it money in or money out?
+SELECT MAX(money_in)
+FROM transactions;
+
+SELECT MAX(money_out)
+FROM transactions;
+
+-- What is the average money_in in the table for the currency Ethereum (‘ETH’)?
+SELECT AVG(money_in)
+FROM transactions
+WHERE currency = 'ETH';
+
+-- Let’s build a ledger for the different dates. Select date, average money_in, and average money_out from the table. And group everything by date.
+SELECT date, ROUND(AVG(money_in),2) AS "Average BY", ROUND(AVG(money_out),2) AS "Average Sell"
+FROM transactions
+GROUP BY date;
