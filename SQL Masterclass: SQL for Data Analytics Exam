@@ -32,6 +32,9 @@ ORDER BY transaction_date;
 
 Answer:
 Transaction_date – Branch – daily total new deposit amount
+Answer:
+Transaction_date – Branch – daily total new deposit amount
+Transaction_date – Branch – daily total new deposit amount
 2019-04-01 -North County - 139196
 2019-04-01 – Central - 179011
 2019-04-01 – Westside -51488
@@ -79,28 +82,28 @@ Transaction_date – Branch – daily total new deposit amount
 2019-04-20 - North County - 140739
 2019-04-21 – Westside - 3419
 2019-04-21 – Central - 79355
-2019-04-21	North County	35753
-2019-04-22	North County	236269
-2019-04-22	Central	188509
-2019-04-22	Westside	97210
-2019-04-25	North County	137025
-2019-04-25	Westside	85828
-2019-04-25	Central	218889
-2019-04-26	Westside	95998
-2019-04-26	North County	29040
-2019-04-26	Central	150139
-2019-04-27	North County	72948
-2019-04-27	Westside	43472
-2019-04-27	Central	56379
-2019-04-28	Westside	12128
-2019-04-28	North County	43217
-2019-04-28	Central	62192
-2019-04-29	North County	22570
-2019-04-29	Westside	19429
-2019-04-29	Central	170279
-2019-04-30	Westside	16930
-2019-04-30	Central	18176
-2019-04-30	North County	11000
+2019-04-21 - North County - 35753
+2019-04-22 - North County - 236269
+2019-04-22 – Central - 188509
+2019-04-22 – Westside - 97210
+2019-04-25 - North County - 137025
+2019-04-25 – Westside - 85828
+2019-04-25 – Central - 218889
+2019-04-26 – Westside - 95998
+2019-04-26 - North County - 29040
+2019-04-26 – Central - 150139
+2019-04-27 - North County - 72948
+2019-04-27 – Westside - 43472
+2019-04-27 – Central - 56379
+2019-04-28 – Westside - 12128
+2019-04-28 - North County - 43217
+2019-04-28 – Central - 62192
+2019-04-29 - North County - 22570
+2019-04-29 – Westside - 19429
+2019-04-29 – Central - 170279
+2019-04-30 – Westside - 16930
+2019-04-30 – Central - 18176
+2019-04-30 - North County - 11000
 
 Which day of the week accounts for the most deposits?
 Code:
