@@ -25,14 +25,82 @@ The following are a few of the questions that may be of interest to the bank’s
 
 What is the daily total new deposit amount for each branch?
 Code:
-SELECT SUM(amount), branch
+SELECT transaction_date, branch, SUM(amount)
 FROM bank_data
-GROUP by branch;
+GROUP BY transaction_date, branch 
+ORDER BY transaction_date;
 
 Answer:
-2204214 - North County
-3118425 - Central
-1289320 - Westside
+Transaction_date – Branch – daily total new deposit amount
+2019-04-01 -North County - 139196
+2019-04-01 – Central - 179011
+2019-04-01 – Westside -51488
+2019-04-02 – Westside -7188
+2019-04-02 - North County - 27805
+2019-04-02 – Central- 72256
+2019-04-04 – Central - 146290
+2019-04-04 – Westside - 122828
+2019-04-04 - North County - 164305
+2019-04-05 – Central - 101480
+2019-04-05 - North County - 50294
+2019-04-05 – Westside -97415
+2019-04-06 – Central -188018
+2019-04-06 - North County - 91724
+2019-04-06 – Westside - 52738
+2019-04-07 - North County - 196188
+2019-04-07 – Westside - 53525
+2019-04-07 – Central - 271227
+2019-04-08 – Central - 105087
+2019-04-08 – Westside - 92013
+2019-04-08 - North County - 77674
+2019-04-11 - North County - 43953
+2019-04-11 – Westside - 89258
+2019-04-11 – Central - 172920
+2019-04-12 - North County - 44621
+2019-04-12 – Westside - 39797
+2019-04-12 – Central - 70300
+2019-04-13 – Central - 143921
+2019-04-13 – Westside - 29075
+2019-04-13 - North County - 176698
+2019-04-14 – Central - 117800
+2019-04-14 – Westside - 36064
+2019-04-14 - North County - 114418
+2019-04-15 – Westside - 85015
+2019-04-15 – Central - 191611
+2019-04-15 - North County - 62787
+2019-04-18 – Central - 79394
+2019-04-18 – Westside - 48337
+2019-04-18 - North County - 72262
+2019-04-19 – Westside - 53721
+2019-04-19 – Central - 209916
+2019-04-19 - North County - 213728
+2019-04-20 – Westside - 56444
+2019-04-20 – Central - 125276
+2019-04-20 - North County - 140739
+2019-04-21 – Westside - 3419
+2019-04-21 – Central - 79355
+2019-04-21	North County	35753
+2019-04-22	North County	236269
+2019-04-22	Central	188509
+2019-04-22	Westside	97210
+2019-04-25	North County	137025
+2019-04-25	Westside	85828
+2019-04-25	Central	218889
+2019-04-26	Westside	95998
+2019-04-26	North County	29040
+2019-04-26	Central	150139
+2019-04-27	North County	72948
+2019-04-27	Westside	43472
+2019-04-27	Central	56379
+2019-04-28	Westside	12128
+2019-04-28	North County	43217
+2019-04-28	Central	62192
+2019-04-29	North County	22570
+2019-04-29	Westside	19429
+2019-04-29	Central	170279
+2019-04-30	Westside	16930
+2019-04-30	Central	18176
+2019-04-30	North County	11000
 
 Which day of the week accounts for the most deposits?
 Code:
@@ -42,26 +110,36 @@ GROUP by weekday
 ORDER by sum(amount) DESC
 LIMIT 1;
  Answer:
-Friday - 1718148
+Friday - 1,718,148
 
 How many accounts were opened at each branch, broken down by account type?
 Code:
-SELECT count(branch), branch
+SELECT Branch, AccType, count(*) As Accounts_opened
 FROM bank_data
-GROUP by branch;
+GROUP by branch, acctype;
 
 Answer:
-197 - North County
-362 - Central
-153 - Westside
+Branch - AcctType - Number of account opened
+Westside - Savings - 35
+Westside - IRA - 5
+Westside - CD - 54
+Westside - Checking - 59
+Central - IRA - 8
+Central - CD - 97
+Central - Checking - 158
+Central - Savings - 99
+North County - Checking - 61
+North County - Savings - 61
+North County - CD - 60
+North County - IRA - 15
 
 How much money was used to open accounts?
 Code:
-SELECT SUM(amount)
+SELECT count(amount)
 FROM bank_data;
 
 Answer:
-Total - 6611959
+Total - 712
 
 What types of accounts do tellers open most often?
 Code:
@@ -71,19 +149,19 @@ WHERE openedby = 'Teller'
 GROUP by acctype;
 
 Answer:
-99 - Checking
-10 - IRA
-71 - CD
-68 - Savings
+Checking - 99
+IRA - 10
+CD - 71
+Savings - 68
 
 In which branch do tellers open the most checking accounts for new customers?
 Code:
 SELECT branch, count(branch)
 FROM bank_data
-WHERE openedby = 'Teller' AND customer = 'New'
+WHERE openedby = 'Teller' AND customer = 'New' AND acctype = 'Checking'
 GROUP BY branch
 ORDER by count(branch) DESC
 LIMIT 1;
 
 Answer:
-52 - Central
+Central - 23
