@@ -1,0 +1,89 @@
+SQL Exam
+
+Source - 
+SQL Masterclass: SQL for Data Analytics
+SQL course covering basic to advanced SQL topics for SQL Database (PostgreSQL). Elucidates SQL Database for beginners. 
+This course has beeen take by over 100,000 people, with a rating of 4.3/5
+https://www.udemy.com/course/the-complete-sql-masterclass-for-data-analytics/
+
+The attached table consists of a month’s worth of new account information for a three-branch bank.
+The table contains 712 rows, and each row represents a new account opened at the bank.
+
+The table has the following columns:
+* The date the account was opened
+* The day of the week the account was opened
+* The opening deposit amount
+* The account type (CD, checking, savings, or IRA)
+* Who opened the account (a teller or a new-account representative)
+* The branch at which it was opened (Central, Westside, or North County)
+* The type of customer (an existing customer or a new customer)
+
+Questions for this assignment
+To make the data more useful, you need to summarize it. Summarizing a database is essentially the process of arranging the data differently in order to answer questions about it. 
+
+The following are a few of the questions that may be of interest to the bank’s management:
+
+What is the daily total new deposit amount for each branch?
+Code:
+SELECT SUM(amount), branch
+FROM bank_data
+GROUP by branch;
+
+Answer:
+2204214 - North County
+3118425 - Central
+1289320 - Westside
+
+Which day of the week accounts for the most deposits?
+Code:
+SELECT SUM(amount), weekday
+FROM bank_data
+GROUP by weekday
+ORDER by sum(amount) DESC
+LIMIT 1;
+ Answer:
+Friday - 1718148
+
+How many accounts were opened at each branch, broken down by account type?
+Code:
+SELECT count(branch), branch
+FROM bank_data
+GROUP by branch;
+
+Answer:
+197 - North County
+362 - Central
+153 - Westside
+
+How much money was used to open accounts?
+Code:
+SELECT SUM(amount)
+FROM bank_data;
+
+Answer:
+Total - 6611959
+
+What types of accounts do tellers open most often?
+Code:
+SELECT COUNT(acctype), acctype
+FROM bank_data
+WHERE openedby = 'Teller'
+GROUP by acctype;
+
+Answer:
+99 - Checking
+10 - IRA
+71 - CD
+68 - Savings
+
+In which branch do tellers open the most checking accounts for new customers?
+Code:
+SELECT branch, count(branch)
+FROM bank_data
+WHERE openedby = 'Teller' AND customer = 'New'
+GROUP BY branch
+ORDER by count(branch) DESC
+LIMIT 1;
+
+Answer:
+52 - Central
